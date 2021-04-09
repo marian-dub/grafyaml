@@ -1,4 +1,9 @@
-datalayer:
+datalayer_sgt2:
+  env:
+    name: sgt2
+    tags:
+      - preprod
+      - sgt2
   templating:
     - name: cluster
       query: active
@@ -7,19 +12,15 @@ datalayer:
       current:
         text: active
         value: active
-    - name: app
-      query: app_name
-      type: constant
-      hide: 2
-      current:
-        text: my-app1
-        value: my-app1
+
   rows:
     - mssql
     - elasticsearch
     - couchbase
 
-datalayercelery:
+datalayer_sgp2:
+  env:
+    name: sgp2
   templating:
     - name: cluster
       query: cluster

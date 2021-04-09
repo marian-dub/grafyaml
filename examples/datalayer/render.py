@@ -32,6 +32,8 @@ def main():
         dashboard["dashboard"]["title"] = appname
         # Add app name as constant template
         for app_template in dashboard["dashboard"]["templating"]:
+            if app_template["current"]["value"] == "env":
+                app_template["current"]["value"] = parsed_input[appname]["env"]["name"]
             if app_template["name"] == "app":
                 app_template["query"] = appname
                 app_template["current"]["text"] = appname
@@ -61,6 +63,8 @@ def main():
         # Override tags if specified
         if "tags" in parsed_input[appname]:
             dashboard["dashboard"]["tags"] = parsed_input[appname]["tags"]
+        if "tags" in parsed_input[appname]["env"]:
+            dashboard["dashboard"]["tags"].extend(parsed_input[appname]["env"]["tags"])
 
         dashboard["dashboard"]["rows"] = rows
 
