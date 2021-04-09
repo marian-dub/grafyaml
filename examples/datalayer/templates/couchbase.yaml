@@ -1,0 +1,24 @@
+rows:
+  title: Couchbase
+  collapse: true
+  showTitle: true
+  height: 300px
+  panels:
+    - title: 'Couchbase QPS'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: 'sum by (bucket) (couchbase_bucket_stats_cmd_set{Subtype="$cluster"}) + sum by (bucket) (couchbase_bucket_stats_cmd_get{Subtype="$cluster"})'
+          legendFormat: '{{ bucket }} '
+      type: graph

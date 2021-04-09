@@ -1,0 +1,63 @@
+rows:
+  title: MYSSQL
+  collapse: true
+  showTitle: true
+  height: 300px
+  panels:
+    - title: 'Disk Throughput Read (MB/S)'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: 'irate(wmi_logical_disk_read_bytes_total{Type="sql"}[1m])/1024/1024'
+          legendFormat: '{{Name}}-{{volume}}(R)'
+      type: graph
+
+    - title: 'Disk Throughput Write (MB/S)'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: 'irate(wmi_logical_disk_write_bytes_total{Type="sql"}[1m])/1024/1024'
+          legendFormat: '{{Name}} {{volume}} (W)'
+      type: graph
+
+
+    - title: 'SQL batch Calls/5min'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: '(rate(wmi_mssql_sqlstats_batch_requests{}[5m]))'
+          legendFormat: '{{Name}}'
+      type: graph

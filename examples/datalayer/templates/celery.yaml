@@ -1,0 +1,43 @@
+rows:
+  title: Celery
+  collapse: true
+  showTitle: true
+  height: 300px
+  panels:
+    - title: 'Celery CPU'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: '100 - ( max by (instance,Name) (irate(node_cpu{mode="idle", Type=~"celery"}[5m])) * 100)'
+          legendFormat: '{{Name}} {{instance}}'
+      type: graph
+
+    - title: 'Celery RAM usage'
+      datasource: $datasource
+      span: 4
+      legend:
+        alignAsTable: true
+        current: true
+        sort: current
+        show: true
+        values: true
+        sortDesc: true
+      tooltip:
+        shared: true
+        sort: 2
+        value_type: individual
+      targets:
+        - expr: '(1-node_memory_MemAvailable{Type=~"celery"}/node_memory_MemTotal)*100'
+          legendFormat: '{{Name}}'
+      type: graph

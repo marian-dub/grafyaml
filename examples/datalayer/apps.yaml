@@ -1,0 +1,38 @@
+frp1_datalayer:
+  templating:
+    - name: cluster
+      query: cluster
+      type: constant
+      hide: 2
+      current:
+        text: active
+        value: active
+    - name: app
+      query: app_name
+      type: constant
+      hide: 2
+      current:
+        text: my-app1
+        value: my-app1
+  rows:
+    - mssql
+    - elasticsearch
+    - couchbase
+
+frp1_datalayer_celery:
+  templating:
+    - name: cluster
+      query: cluster
+      type: constant
+      hide: 2
+      current:
+        text: active
+        value: active
+
+  rows:
+    - mssql
+    - elasticsearch
+    - couchbase
+    - celery
+
+
