@@ -1,7 +1,7 @@
 datalayer:
   templating:
     - name: cluster
-      query: cluster
+      query: active
       type: constant
       hide: 2
       current:
