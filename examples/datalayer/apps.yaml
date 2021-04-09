@@ -1,4 +1,4 @@
-datalayer_sgt2:
+datalayer-sgt2:
   env:
     name: sgt2
     tags:
@@ -18,7 +18,7 @@ datalayer_sgt2:
     - elasticsearch
     - couchbase
 
-datalayer_sgp2:
+datalayer-sgp2:
   env:
     name: sgp2
   templating:
