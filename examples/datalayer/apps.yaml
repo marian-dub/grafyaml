@@ -1,4 +1,4 @@
-frp1_datalayer:
+datalayer:
   templating:
     - name: cluster
       query: cluster
@@ -19,7 +19,7 @@ frp1_datalayer:
     - elasticsearch
     - couchbase
 
-frp1_datalayer_celery:
+datalayercelery:
   templating:
     - name: cluster
       query: cluster
